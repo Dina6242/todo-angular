@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  form = new FormGroup({
+  frmlogin = new FormGroup({
     username: new FormControl(null, Validators.email),
     password: new FormControl(null, Validators.required),
   });

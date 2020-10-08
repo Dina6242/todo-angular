@@ -1,16 +1,98 @@
 <div class="row">
   <div class="col-md-6 offset-md-3 mt-4">
     <h3>Register</h3>
-    <form>
+    <form (ngSubmit)="userService.register(frmSignup.value)" [formGroup]="frmSignup">
       <div class="form-group">
         <label for="registerUsername">Username</label>
-        <input class="form-control" id="registerUsername" placeholder="Enter username" type="text">
+        <input [ngClass]="frmSignup.controls['username'].invalid ? 'is-invalid' : ''"
+               class="form-control"
+               formControlName="username"
+               id="registerUsername"
+               placeholder="Enter username"
+               required>
+
       </div>
       <div class="form-group">
         <label for="registerPassword">Password</label>
-        <input class="form-control" id="registerPassword" placeholder="Password" type="password">
+        <input class="form-control"
+               formControlName="password"
+               id="registerPassword"
+               placeholder="Password"
+               type="password">
       </div>
-      <button class="btn btn-primary" type="submit">Login</button>
+      <label
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('minlength')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
+        frmSignup.controls['password'].hasError('minlength') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must be at least 8 characters!
+      </label>
+      <label
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasNumber')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
+        frmSignup.controls['password'].hasError('hasNumber') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 number!
+      </label>
+
+      <label
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasCapitalCase')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
+        frmSignup.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 in Capital Case!
+      </label>
+
+      <label
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSmallCase')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
+        frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 Letter in Small Case!
+      </label>
+      <label
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSpecialCharacters')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
+        frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 Special Character!
+      </label>
+      <div class="form-group">
+        <label for="ConfirmPassword">ConfirmPassword</label>
+        <input class="form-control"
+               formControlName="confirmPassword"
+               id="ConfirmPassword"
+               placeholder="ConfirmPassword"
+               type="password">
+      </div>
+      <label *ngIf="frmSignup.controls['confirmPassword'].hasError('required')" class="text-danger">
+        Password is Required!
+      </label>
+      <label *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')" class="text-danger">
+        password don't match
+      </label>
+      <br>
+      <button [disabled]="!frmSignup.valid" class="btn btn-primary" type="submit">Sing up</button>
     </form>
   </div>
 </div>

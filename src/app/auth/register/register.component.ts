@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../services/customValidators';
 import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
   templateUrl: './register.component.html',
@@ -9,8 +11,10 @@ import { UserService } from '../services/user.service';
 })
 export class RegisterComponent {
   public frmSignup: FormGroup;
+  public massage: string;
+  @ViewChild('modal', {static: false}) modal: ModalDirective;
 
-  constructor(public userService: UserService, private fb: FormBuilder) {
+  constructor(public userService: UserService, private fb: FormBuilder, private authService: AuthService) {
     this.frmSignup = this.createSignupForm();
   }
 
@@ -54,5 +58,17 @@ export class RegisterComponent {
       },
     );
   }
+
+  register(): void {
+    const userDetalis = this.frmSignup.value;
+    this.userService.register(userDetalis).subscribe(res => {
+      this.authService.authenticate(res.access_token);
+    }, error => {
+      this.modal.show();
+      console.log(error);
+      this.massage = 'your registration was unsuccessful';
+    });
+  }
 }
+
 

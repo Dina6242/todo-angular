@@ -3,25 +3,21 @@ import { environment } from '../../../environments/environment';
 import { Login } from '../interfaces/login';
 import { HttpClient } from '@angular/common/http';
 import { AuthToken } from '../interfaces/auth-token';
-import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-
-  constructor(private  http: HttpClient, private authService: AuthService) {
+  constructor(private  http: HttpClient) {
   }
 
-  register(credentials: Login): void {
-    this.http.post<AuthToken>(`${environment.apiUrl}auth/register`, credentials).subscribe(res => {
-      this.authService.authenticate(res.access_token);
-    });
+  register(credentials: Login): Observable<AuthToken> {
+    return this.http.post<AuthToken>(`${environment.apiUrl}auth/register`, credentials);
   }
 
-  login(credentials: Login): void {
-    this.http.post<AuthToken>(`${environment.apiUrl}auth/login`, credentials).subscribe(res => {
-      this.authService.authenticate(res.access_token);
-    });
+  login(credentials: Login): Observable<AuthToken> {
+    return this.http.post<AuthToken>(`${environment.apiUrl}auth/login`, credentials);
   }
 }

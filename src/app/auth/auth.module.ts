@@ -11,8 +11,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   exports: [
-    LoginComponent,
-    RegisterComponent,
   ],
   imports: [
     CommonModule,

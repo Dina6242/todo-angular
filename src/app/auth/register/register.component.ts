@@ -10,16 +10,20 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  public frmSignup: FormGroup;
+  public registerForm: FormGroup;
   public massage: string;
   @ViewChild('modal', {static: false}) modal: ModalDirective;
 
-  constructor(public userService: UserService, private fb: FormBuilder, private authService: AuthService) {
-    this.frmSignup = this.createSignupForm();
+  constructor(
+    public userService: UserService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+  ) {
+    this.registerForm = this.createSignupForm();
   }
 
   createSignupForm(): FormGroup {
-    return this.fb.group(
+    return this.formBuilder.group(
       {
         username: [
           null,
@@ -60,12 +64,11 @@ export class RegisterComponent {
   }
 
   register(): void {
-    const userDetalis = this.frmSignup.value;
+    const userDetalis = this.registerForm.value;
     this.userService.register(userDetalis).subscribe(res => {
       this.authService.authenticate(res.access_token);
     }, error => {
       this.modal.show();
-      console.log(error);
       this.massage = 'your registration was unsuccessful';
     });
   }

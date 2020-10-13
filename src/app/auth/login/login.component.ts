@@ -11,9 +11,9 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class LoginComponent {
   public massage: string;
-  @ViewChild('modal', {static: false}) modal: ModalDirective;
-  frmlogin = new FormGroup({
-    username: new FormControl(null, Validators.email),
+  @ViewChild('modal') modal: ModalDirective;
+  formLogin = new FormGroup({
+    username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
 
@@ -21,10 +21,13 @@ export class LoginComponent {
   }
 
   login(): void {
-    const userDetalis = this.frmlogin.value;
+    const userDetalis = this.formLogin.value;
     this.userService.login(userDetalis).subscribe(res => {
       this.authService.authenticate(res.access_token);
-    }, error => console.log({error}, error));
+    }, error => {
+      this.modal.show();
+      this.massage = 'your login was unsuccessful';
+    });
 
   }
 }

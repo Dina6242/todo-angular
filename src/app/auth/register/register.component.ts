@@ -11,7 +11,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class RegisterComponent {
   public registerForm: FormGroup;
-  public massage: string;
+  public message: string;
   @ViewChild('modal', {static: false}) modal: ModalDirective;
 
   constructor(
@@ -69,7 +69,7 @@ export class RegisterComponent {
       this.authService.authenticate(res.access_token);
     }, error => {
       this.modal.show();
-      this.massage = 'your registration was unsuccessful';
+      this.message = error.error.message;
     });
   }
 }

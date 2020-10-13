@@ -10,7 +10,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  public massage: string;
+  public message: string;
   @ViewChild('modal') modal: ModalDirective;
   formLogin = new FormGroup({
     username: new FormControl(null, Validators.required),
@@ -22,11 +22,12 @@ export class LoginComponent {
 
   login(): void {
     const userDetalis = this.formLogin.value;
+    console.log(userDetalis);
     this.userService.login(userDetalis).subscribe(res => {
       this.authService.authenticate(res.access_token);
     }, error => {
       this.modal.show();
-      this.massage = 'your login was unsuccessful';
+      this.message = error.error.message;
     });
 
   }

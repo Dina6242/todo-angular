@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UnloginGuard } from './unlogin-guard.service';
+import { UnloginGuard } from './unlogin.guard';
 
 describe('UnloggedGuard', () => {
   let guard: UnloginGuard;

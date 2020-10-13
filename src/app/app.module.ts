@@ -24,11 +24,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     ModalModule.forRoot(),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: JwtInterceptor,
-    multi: true,
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent],
 })
 export class AppModule {

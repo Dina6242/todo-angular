@@ -18,7 +18,7 @@
                placeholder="Password"
                type="password">
       </div>
-      <button class="btn btn-primary" type="submit">Login</button>
+      <button [disabled]="formLogin.invalid" class="btn btn-primary" type="submit">Login</button>
     </form>
   </div>
 </div>

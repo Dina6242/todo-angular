@@ -22,7 +22,6 @@ export class LoginComponent {
 
   login(): void {
     const userDetalis = this.formLogin.value;
-    console.log(userDetalis);
     this.userService.login(userDetalis).subscribe(res => {
       this.authService.authenticate(res.access_token);
     }, error => {

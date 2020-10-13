@@ -29,7 +29,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,
-    }],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

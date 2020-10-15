@@ -1,1 +1,117 @@
-<p>register works!</p>
+<div class="row">
+  <div class="col-md-6 offset-md-3 mt-4">
+    <h3>Register</h3>
+    <form (ngSubmit)="register()" [formGroup]="registerForm">
+      <div class="form-group">
+        <label for="registerUsername">Username</label>
+        <input [ngClass]="registerForm.controls['username'].invalid && registerForm.controls['username'].touched ? 'is-invalid' : '' "
+               class="form-control"
+               formControlName="username"
+               id="registerUsername"
+               placeholder="Enter username"
+               required>
+
+
+      </div>
+      <div class="form-group">
+        <label for="registerPassword">Password</label>
+        <input [ngClass]="registerForm.controls['password'].invalid && registerForm.controls['password'].touched ? 'is-invalid' : '' "
+               class="form-control"
+               formControlName="password"
+               id="registerPassword"
+               placeholder="Password"
+               type="password">
+      </div>
+      <label
+        [class.success]="registerForm.controls['password']?.touched &&!registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].hasError('minlength')"
+        class="col">
+        <i class="material-icons">
+          {{ registerForm.controls['password'].hasError('required') ||
+        registerForm.controls['password'].hasError('minlength') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must be at least 8 characters!
+      </label>
+      <label
+        [class.success]="!registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].hasError('hasNumber') "
+        class="col"
+      >
+        <i class="material-icons">
+          {{ registerForm.controls['password'].hasError('required') ||
+        registerForm.controls['password'].hasError('hasNumber') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 number!
+      </label>
+
+      <label
+        [class.success]="!registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].hasError('hasCapitalCase')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ registerForm.controls['password'].hasError('required') ||
+        registerForm.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 in Capital Case!
+      </label>
+
+      <label
+        [class.success]="!registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].hasError('hasSmallCase')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ registerForm.controls['password'].hasError('required') ||
+        registerForm.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 Letter in Small Case!
+      </label>
+      <label
+        [class.success]="!registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].hasError('hasSpecialCharacters')"
+        class="col"
+      >
+        <i class="material-icons">
+          {{ registerForm.controls['password'].hasError('required') ||
+        registerForm.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+          'check_circle' }}
+        </i>
+        Must contain at least 1 Special Character!
+      </label>
+      <div class="form-group">
+        <label for="ConfirmPassword">ConfirmPassword</label>
+        <input [ngClass]="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched ? 'is-invalid' : '' "
+               class="form-control"
+               formControlName="confirmPassword"
+               id="ConfirmPassword"
+               placeholder="ConfirmPassword"
+               type="password">
+      </div>
+      <label *ngIf="registerForm.controls['confirmPassword'].hasError('required')" class="text-danger">
+        Password is Required!
+      </label>
+      <label *ngIf="registerForm.controls['confirmPassword'].hasError('NoPassswordMatch')" class="text-danger">
+        password don't match
+      </label>
+      <br>
+      <button [disabled]="!registerForm.valid" class="btn btn-primary" type="submit">Sing up</button>
+    </form>
+  </div>
+</div>
+<div #modal="bs-modal" aria-labelledby="dialog-events-name" bsModal
+     class="modal fade" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left" id="dialog-events-name">Massage</h4>
+        <button (click)="modal.hide()" aria-label="Close" class="close pull-right" type="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{message}}.
+      </div>
+    </div>
+  </div>
+</div>
+

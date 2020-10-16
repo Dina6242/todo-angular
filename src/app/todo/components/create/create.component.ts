@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from '../../services/todo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -13,7 +14,7 @@ export class CreateComponent implements OnInit {
     time: new FormControl(null, Validators.required),
   });
 
-  constructor(private  todoService: TodoService) {
+  constructor(private  todoService: TodoService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,5 +22,6 @@ export class CreateComponent implements OnInit {
 
   post(): void {
     this.todoService.createTask(this.createForm.value);
+    this.router.navigate(['/home']);
   }
 }

@@ -12,10 +12,7 @@ export class TodoService {
   }
 
   createTask(todo: Partial<Todo>): void {
-    this.http.post(`${environment.apiUrl}todos`, todo).subscribe(res => {
-      console.log(res);
-    });
-
+    this.http.post(`${environment.apiUrl}todos`, todo).subscribe();
   }
 
 

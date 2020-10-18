@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import { HomeComponent } from './home.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    CalendarModule,
   ],
 })
 export class HomeModule {

@@ -21,7 +21,6 @@ export class CreateComponent implements OnInit {
   }
 
   post(): void {
-    this.todoService.createTask(this.createForm.value);
-    this.router.navigate(['/home']);
+    this.todoService.createTask(this.createForm.value).subscribe(() => this.router.navigate(['/home']));
   }
 }

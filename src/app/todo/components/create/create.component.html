@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 offset-md-3 mt-4">
     <h3>Create</h3>
-    <form [formGroup]="createForm">
+    <form (ngSubmit)="post()" [formGroup]="createForm">
       <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control"
@@ -17,7 +17,7 @@
                id="date"
                type="datetime-local">
       </div>
-      <button (click)="post()" [disabled]="createForm.invalid" class="btn btn-primary" type="submit"> Create</button>
+      <button [disabled]="createForm.invalid" class="btn btn-primary" type="submit"> Create</button>
     </form>
   </div>
 </div>

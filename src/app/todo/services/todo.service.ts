@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Todo } from '../interfaces/todo';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Todo } from '../interfaces/todo';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,10 @@ import { HttpClient } from '@angular/common/http';
 export class TodoService {
 
   constructor(private http: HttpClient) {
+  }
+
+  createTask(todo: Partial<Todo>): Observable<void> {
+    return this.http.post<void>(`${environment.apiUrl}todos`, todo);
   }
 
   getAllTask(): Observable<Todo[]> {

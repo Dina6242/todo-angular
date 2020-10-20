@@ -1,9 +1,18 @@
 <div class="list-group col-md-6 offset-md-3 mt-4">
-  <a class="list-group-item list-group-item-action active">
+  <h1 class="list-group-item list-group-item-action active">
     Tasks
-  </a>
-  <a *ngFor="let task of tasks" class="list-group-item list-group-item-action">
-    {{task.name}}<br>{{task.time}}
-  </a>
+  </h1>
+  <div *ngFor="let task of tasks" class="list-group-item">
+    {{task.name}}{{task.time}}
+    <a routerLink="/todo/update/{{task.id}}">
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </a>
+    <button (click)="delete(task.id)" class="color-danger">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+
+  </div>
+
+
 </div>
 <ejs-calendar [isMultiSelection]='multiselect' [values]='value' id=calendar></ejs-calendar>

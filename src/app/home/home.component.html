@@ -4,7 +4,7 @@
   </h1>
   <div *ngFor="let task of tasks" class="list-group-item">
     {{task.name}}{{task.time}}
-    <a routerLink="/todo/update/{{task.id}}">
+    <a routerLink="../todo/update/{{task.id}}">
       <fa-icon [icon]="faEdit"></fa-icon>
     </a>
     <button (click)="delete(task.id)" class="color-danger">

@@ -20,8 +20,16 @@ export class TodoService {
     return this.http.get<Todo[]>(`${environment.apiUrl}todos`);
   }
 
+  getById(id: string): Observable<Todo> {
+    return this.http.get<Todo>(`${environment.apiUrl}todos/${id}`);
+  }
+
   deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}todos/${id}`);
+  }
+
+  updateTask(id: string, todo: Partial<Todo>): Observable<void> {
+    return this.http.put<void>(`${environment.apiUrl}todos/${id}`, todo);
   }
 }
 

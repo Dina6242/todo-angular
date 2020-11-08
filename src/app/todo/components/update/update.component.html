@@ -3,11 +3,11 @@
     <h3>Update</h3>
     <form (ngSubmit)="put()" [formGroup]="updateForm">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Task Name</label>
         <input class="form-control"
-               formControlName="taskName"
+               formControlName="name"
                id="name"
-               placeholder="Task name"
+               placeholder="Task Name"
                type="text">
       </div>
       <div class="form-group">
@@ -17,7 +17,7 @@
                id="date"
                type="datetime-local">
       </div>
-      <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit"> Update</button>
+      <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit">Update</button>
     </form>
   </div>
 </div>

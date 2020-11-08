@@ -3,8 +3,8 @@
     Tasks
   </h1>
   <div *ngFor="let task of tasks" class="list-group-item">
-    {{task.taskName}}{{task.time}}
-    <a routerLink="../todo/update/{{task.id}}">
+    {{task.name}}{{task.time}}
+    <a routerLink="/todo/update/{{task.id}}">
       <fa-icon [icon]="faEdit"></fa-icon>
     </a>
     <button (click)="delete(task.id)" class="color-danger">

@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateComponent implements OnInit {
 
   updateForm = new FormGroup({
-    taskName: new FormControl(null, Validators.required),
+    name: new FormControl(null, Validators.required),
     time: new FormControl(null, Validators.required),
   });
 
@@ -24,7 +24,7 @@ export class UpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.todoService.getById(id).subscribe(res => {
-        this.updateForm.get('name')?.setValue(res.taskName);
+        this.updateForm.get('name')?.setValue(res.name);
         this.updateForm.get('time')?.setValue(res.time);
       });
     }

@@ -15,9 +15,11 @@ export class UpdateComponent implements OnInit {
     time: new FormControl(null, Validators.required),
   });
 
-  constructor(private  todoService: TodoService,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(
+    private todoService: TodoService,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
   }
 
   ngOnInit(): void {

@@ -1,28 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/">TO-DO</a>
-  <button aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          class="navbar-toggler"
-          data-target="#navbarNav"
-          data-toggle="collapse"
-          type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
+<nav class="navbar  navbar-expand-lg navbar-light bg-primary container">
+  <div class="collapse navbar-collapse d-flex container">
+    <a class="navbar-brand text-white navbar-text" routerLink="/">TO-DO</a>
+
+    <button (click)="isCollapsed =!isCollapsed" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="myTogglerNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div [collapse]="isCollapsed" [isAnimated]="true" class="collapse navbar-collapse" id="myTogglerNav">
+      <div class="navbar-nav ml-auto">
         <a *ngIf="!auth.isAuthenticated"
-           class="nav-link"
+           class="nav-item nav-link text-white"
            routerLink="/auth/register"
-           routerLinkActive="active">Register</a>
-      </li>
-      <li class="nav-item">
-        <a *ngIf="!auth.isAuthenticated" class="nav-link" routerLink="/auth/login" routerLinkActive="active">Login</a>
-      </li>
-      <li class="nav-item">
-        <a (click)="auth.logout()" *ngIf="auth.isAuthenticated" class="nav-link">Logout</a>
-      </li>
-    </ul>
+           routerLinkActive="active-link">Register</a>
+        <a *ngIf="!auth.isAuthenticated"
+           class="nav-item nav-link text-white "
+           routerLink="/auth/login"
+           routerLinkActive="active-link">Login</a>
+        <a (click)="auth.logout()"
+           *ngIf="auth.isAuthenticated"
+           class="nav-item nav-link text-white"
+           routerLink="/auth/login"
+           routerLinkActive="active-link">Logout</a>
+      </div>
+    </div>
   </div>
 </nav>
+

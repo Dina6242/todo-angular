@@ -1,25 +1,26 @@
 <div class="container">
   <div class="row">
-
-    <div class="list-group col-6">
-      <h1 class="list-group-item list-group-item-action active">
+    <div class="list-group col">
+      <h1 class="list-group-item m-0 d-flex">
         Tasks
-        <a routerLink="/todo/create">
-          <fa-icon [icon]="faPluSquare" style="color: white"></fa-icon>
+        <a class="ml-auto" routerLink="/todo/create">
+          <fa-icon [icon]="faPluSquare" style="color:green"></fa-icon>
         </a>
       </h1>
-      <div *ngFor="let task of tasks" class="list-group-item ">
+      <div *ngFor="let task of tasks" class="list-group-item d-flex ">
         "{{task.name}}"  {{task.time | date  :'medium'}}
-        <a routerLink="/todo/update/{{task.id}}">
-          <fa-icon [icon]="faEdit"></fa-icon>
-        </a>
-        <button (click)="delete(task.id)" class="color-danger">
-          <fa-icon [icon]="faTrash"></fa-icon>
-        </button>
+        <div class="ml-auto">
+          <a routerLink="/todo/update/{{task.id}}">
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </a>
+          <button (click)="delete(task.id)" class="color-danger">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="col-6">
-      <ejs-calendar [isMultiSelection]='multiselect' [values]='value' id=calendar></ejs-calendar>
+    <div class="col">
+      <ejs-calendar [isMultiSelection]='multiselect' [values]='value' class="ml-auto" id=calendar></ejs-calendar>
     </div>
   </div>
 </div>

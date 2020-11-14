@@ -1,5 +1,5 @@
 <nav class="navbar  navbar-expand-lg navbar-light bg-primary container">
-  <div class="collapse navbar-collapse d-flex container">
+  <div class="d-flex container">
     <a class="navbar-brand text-white navbar-text" routerLink="/">TO-DO</a>
 
     <button (click)="isCollapsed =!isCollapsed" [attr.aria-expanded]="!isCollapsed"
@@ -13,18 +13,17 @@
     <div [collapse]="isCollapsed" [isAnimated]="true" class="collapse navbar-collapse" id="myTogglerNav">
       <div class="navbar-nav ml-auto">
         <a *ngIf="!auth.isAuthenticated"
-           class="nav-item nav-link text-white"
+           class="nav-item nav-link btn btn-primary text-white"
            routerLink="/auth/register"
            routerLinkActive="active-link">Register</a>
         <a *ngIf="!auth.isAuthenticated"
-           class="nav-item nav-link text-white "
+           class="nav-item nav-link btn btn-primary text-white"
            routerLink="/auth/login"
            routerLinkActive="active-link">Login</a>
-        <a (click)="auth.logout()"
-           *ngIf="auth.isAuthenticated"
-           class="nav-item nav-link text-white"
-           routerLink="/auth/login"
-           routerLinkActive="active-link">Logout</a>
+        <button (click)="auth.logout()"
+                *ngIf="auth.isAuthenticated"
+                class="nav-item nav-link btn btn-primary text-white">Logout
+        </button>
       </div>
     </div>
   </div>

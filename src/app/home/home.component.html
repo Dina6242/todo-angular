@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="list-group col">
-      <h1 class="list-group-item m-0 d-flex">
+      <h1 class="list-group-item m-0 d-flex px-sm-3 px-lg-4">
         Tasks
         <a class="ml-auto" routerLink="/todo/create">
           <fa-icon [icon]="faPluSquare" style="color:green"></fa-icon>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col pr-0">
       <ejs-calendar [isMultiSelection]='multiselect' [values]='value' class="ml-auto" id=calendar></ejs-calendar>
     </div>
   </div>

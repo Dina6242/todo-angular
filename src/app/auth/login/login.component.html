@@ -1,41 +1,42 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3 mt-4">
-    <h3>Login</h3>
-    <form (ngSubmit)="login()" [formGroup]="formLogin">
-      <div class="form-group">
-        <label for="loginUsername">Username</label>
-        <input class="form-control"
-               formControlName="username"
-               id="loginUsername"
-               placeholder="Enter username"
-               type="text">
-      </div>
-      <div class="form-group">
-        <label for="loginPassword">Password</label>
-        <input class="form-control"
-               formControlName="password"
-               id="loginPassword"
-               placeholder="Password"
-               type="password">
-      </div>
-      <button [disabled]="formLogin.invalid" class="btn btn-primary" type="submit">Login</button>
-    </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <h3>Login</h3>
+      <form (ngSubmit)="login()" [formGroup]="formLogin">
+        <div class="form-group">
+          <label for="loginUsername">Username</label>
+          <input class="form-control"
+                 formControlName="username"
+                 id="loginUsername"
+                 placeholder="Enter username"
+                 type="text">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input class="form-control"
+                 formControlName="password"
+                 id="loginPassword"
+                 placeholder="Password"
+                 type="password">
+        </div>
+        <button [disabled]="formLogin.invalid" class="btn btn-primary" type="submit">Login</button>
+      </form>
+    </div>
   </div>
-</div>
-<div #modal="bs-modal" aria-labelledby="dialog-events-name" bsModal
-     class="modal fade" role="dialog" tabindex="-1">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left" id="dialog-events-name">Massage</h4>
-        <button (click)="modal.hide()" aria-label="Close" class="close pull-right" type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        {{message}}.
+  <div #modal="bs-modal" aria-labelledby="dialog-events-name" bsModal
+       class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left" id="dialog-events-name">Massage</h4>
+          <button (click)="modal.hide()" aria-label="Close" class="close pull-right" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{message}}.
+        </div>
       </div>
     </div>
   </div>
 </div>
-

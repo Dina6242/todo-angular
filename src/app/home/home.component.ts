@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo/services/todo.service';
 import { Todo } from '../todo/interfaces/todo';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlusSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   tasks: Array<Todo>;
   faTrash = faTrash;
   faEdit = faEdit;
+  faPluSquare = faPlusSquare;
 
   constructor(private  todoService: TodoService) {
   }

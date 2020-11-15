@@ -11,6 +11,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ModalModule.forRoot(),
     CalendarModule,
     FontAwesomeModule,
+    CollapseModule.forRoot(),
   ],
   providers: [
     {

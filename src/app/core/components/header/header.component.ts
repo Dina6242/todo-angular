@@ -8,7 +8,7 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isCollapsed = false;
+  isCollapsed = true;
   constructor(public  auth: AuthService) {
   }
 

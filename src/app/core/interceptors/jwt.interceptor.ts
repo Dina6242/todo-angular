@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
     });
     return next.handle(req).pipe(
       catchError(
-        (err, caught) => {
+        (err) => {
           if (err.status === 401) {
             this.handleAuthError();
             return of(err);
@@ -31,6 +31,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
   private handleAuthError(): void {
     localStorage.removeItem('token');
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('auth');
   }
 }
